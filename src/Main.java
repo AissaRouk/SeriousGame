@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.border.Border;
 
 public class Main {
     JFrame window;
@@ -52,54 +53,64 @@ public class Main {
         createOptions();
         createWindow();
     }
-    public void createFont(){
+
+    public void createFont() {
         font = new Font("Comic Sans MS", Font.PLAIN, 32);
     }
-    public void createColor(){
+
+    public void createColor() {
         color = new Color(204, 48, 48, 255);
     }
 
     private class Upgrade1 {
         String uimage = "wok.png";
 
-        public void setClick(){
+        public void setClick() {
             clickValue = 2;
         }
-        public String getImage(){
+
+        public String getImage() {
             return uimage;
         }
-        public void setImage(){
+
+        public void setImage() {
             image = "wok.png";
         }
     }
+
     private class Upgrade2 {
         String uimage = "xina.png";
 
-        public void setClick(){
+        public void setClick() {
             clickValue = 5;
         }
-        public String getImage(){
+
+        public String getImage() {
             return uimage;
         }
-        public void setImage(){
+
+        public void setImage() {
             image = "xina.png";
         }
     }
+
     private class Upgrade3 {
         String uimage = "eggman.png";
 
-        public void setClick(){
+        public void setClick() {
             clickValue = 10;
         }
-        public String getImage(){
+
+        public String getImage() {
             return uimage;
         }
-        public void setImage(){
+
+        public void setImage() {
             image = "eggman.png";
         }
     }
 
-    public void createWindow(){
+    public void createWindow() {
         window = new JFrame("BingChilling Clicker Game 4000 LIMITED EDITION (WARNING: EMOTIONAL DAMAGE).exe");
         cardCont = new JPanel();
         cards = new CardLayout();
@@ -108,8 +119,8 @@ public class Main {
         cardCont.add(game, "2");
         cardCont.add(options, "3");
         cards.show(cardCont, "1");
-        ImageIcon frameImage  = new ImageIcon(Main.class.getClassLoader().getResource("icon.png"));
-        window.setSize(800,600);
+        ImageIcon frameImage = new ImageIcon(Main.class.getClassLoader().getResource("icon.png"));
+        window.setSize(800, 600);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setIconImage(frameImage.getImage());
         window.add(cardCont);
@@ -118,7 +129,7 @@ public class Main {
         window.add(cardCont);
     }
 
-    public void createUI(){
+    public void createUI() {
         game = new JPanel();
         game.setLayout(null);
         game.setBackground(color);
@@ -144,8 +155,8 @@ public class Main {
         upgrade1Button.setLayout(new BorderLayout());
         JLabel label1 = new JLabel("The Wok upgrade uwu", SwingConstants.CENTER);
         JLabel label2 = new JLabel("10 social credits", SwingConstants.CENTER);
-        upgrade1Button.add(BorderLayout.NORTH,label1);
-        upgrade1Button.add(BorderLayout.SOUTH,label2);
+        upgrade1Button.add(BorderLayout.NORTH, label1);
+        upgrade1Button.add(BorderLayout.SOUTH, label2);
         upgrade1Button.setBounds(450, 150, 200, 50);
         upgrade1Button.addActionListener(upgrade1click);
         game.add(upgrade1Button);
@@ -154,8 +165,8 @@ public class Main {
         upgrade2Button.setLayout(new BorderLayout());
         JLabel label3 = new JLabel("Zhong Xina upgrade owo", SwingConstants.CENTER);
         JLabel label4 = new JLabel("50 social credits", SwingConstants.CENTER);
-        upgrade2Button.add(BorderLayout.NORTH,label3);
-        upgrade2Button.add(BorderLayout.SOUTH,label4);
+        upgrade2Button.add(BorderLayout.NORTH, label3);
+        upgrade2Button.add(BorderLayout.SOUTH, label4);
         upgrade2Button.setBounds(450, 250, 200, 50);
         upgrade2Button.addActionListener(upgrade2click);
         game.add(upgrade2Button);
@@ -164,8 +175,8 @@ public class Main {
         upgrade3Button.setLayout(new BorderLayout());
         JLabel label5 = new JLabel("Eggman upgrade ara ara", SwingConstants.CENTER);
         JLabel label6 = new JLabel("100 social credits", SwingConstants.CENTER);
-        upgrade3Button.add(BorderLayout.NORTH,label5);
-        upgrade3Button.add(BorderLayout.SOUTH,label6);
+        upgrade3Button.add(BorderLayout.NORTH, label5);
+        upgrade3Button.add(BorderLayout.SOUTH, label6);
         upgrade3Button.setBounds(450, 350, 200, 50);
         upgrade3Button.addActionListener(upgrade3click);
         game.add(upgrade3Button);
@@ -175,7 +186,7 @@ public class Main {
         JPanel counterPanel = new JPanel();
         counterPanel.setBounds(76, 100, 250, 100);
         counterPanel.setOpaque(false);
-        counterPanel.setLayout(new GridLayout(2,1));
+        counterPanel.setLayout(new GridLayout(2, 1));
         game.add(counterPanel);
 
         counterLabel = new JLabel(String.valueOf(creditCounter), SwingConstants.CENTER);
@@ -195,7 +206,7 @@ public class Main {
         game.add(back);
     }
 
-    public void createMainMenu(){
+    public void createMainMenu() {
         mainMenu = new JPanel();
         mainMenu.setLayout(null);
         mainMenu.setBackground(color);
@@ -227,7 +238,8 @@ public class Main {
         mainMenu.add(version);
 
     }
-    public void createOptions(){
+
+    public void createOptions() {
         options = new JPanel();
         options.setLayout(null);
         options.setBackground(color);
@@ -258,19 +270,28 @@ public class Main {
         options.add(color3button);
 
     }
+
     public class PlayButton implements ActionListener {
         public void actionPerformed(ActionEvent playClick) {
             cards.show(cardCont, "2");
         }
     }
+
     public class OptionsButton implements ActionListener {
         public void actionPerformed(ActionEvent optionsClick) {
             cards.show(cardCont, "3");
         }
     }
+
     public class ExitButton implements ActionListener {
         public void actionPerformed(ActionEvent exitClick) {
             System.exit(0);
+        }
+    }
+
+    public class BackButton implements ActionListener {
+        public void actionPerformed(ActionEvent backClick) {
+            cards.show(cardCont, "1");
         }
     }
 
@@ -281,6 +302,7 @@ public class Main {
             options.setBackground(Color.CYAN);
         }
     }
+
     public class Color2 implements ActionListener {
         public void actionPerformed(ActionEvent color2click) {
             mainMenu.setBackground(Color.GREEN);
@@ -288,6 +310,7 @@ public class Main {
             options.setBackground(Color.GREEN);
         }
     }
+
     public class Color3 implements ActionListener {
         public void actionPerformed(ActionEvent color3click) {
             mainMenu.setBackground(color);
@@ -296,17 +319,17 @@ public class Main {
         }
     }
 
-
     public class CreditHandler implements ActionListener {
         public void actionPerformed(ActionEvent upgrade1click) {
             creditCounter += clickValue;
             counterLabel.setText(String.valueOf(creditCounter));
         }
     }
+
     public class Upgrade1Handler implements ActionListener {
         public void actionPerformed(ActionEvent upgrade1click) {
             Upgrade1 upgrade = new Upgrade1();
-            if(creditCounter >= 10){
+            if (creditCounter >= 10) {
                 creditCounter = creditCounter - 10;
                 counterLabel.setText(String.valueOf(creditCounter));
                 upgrade.setClick();
@@ -319,9 +342,10 @@ public class Main {
             }
         }
     }
+
     public class Upgrade2Handler implements ActionListener {
         public void actionPerformed(ActionEvent upgrade2click) {
-            if(creditCounter >= 50) {
+            if (creditCounter >= 50) {
                 creditCounter = creditCounter - 50;
                 counterLabel.setText(String.valueOf(creditCounter));
                 Upgrade2 upgrade = new Upgrade2();
@@ -335,9 +359,10 @@ public class Main {
             }
         }
     }
+
     public class Upgrade3Handler implements ActionListener {
         public void actionPerformed(ActionEvent upgrade3click) {
-            if(creditCounter >= 100) {
+            if (creditCounter >= 100) {
                 creditCounter = creditCounter - 100;
                 counterLabel.setText(String.valueOf(creditCounter));
                 Upgrade3 upgrade = new Upgrade3();
@@ -351,9 +376,4 @@ public class Main {
             }
         }
     }
-    public class BackButton implements ActionListener {
-        public void actionPerformed(ActionEvent backClick) {
-            cards.show(cardCont, "1");
-            }
-        }
 }
