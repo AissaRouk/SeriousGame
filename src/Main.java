@@ -1,3 +1,5 @@
+package SeriousGame.src;
+
 import java.awt.*;
 
 public class Main {

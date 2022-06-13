@@ -1,3 +1,5 @@
+package SeriousGame.src;
+
 import javax.swing.*;
 import java.awt.*;
 
