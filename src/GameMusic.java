@@ -1,5 +1,3 @@
-package SeriousGame.src;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -9,8 +7,8 @@ import java.net.URL;
 public class GameMusic {
 
     Clip clip;
-    float previousVolume = -10;
-    float currentVolume = -10;
+    float previousVolume = -20;
+    float currentVolume = -20;
     FloatControl fc;
     boolean mute = false;
 
@@ -20,34 +18,21 @@ public class GameMusic {
             clip = AudioSystem.getClip();
             clip.open(sound);
             fc = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
+            fc.setValue(-20.0f);
         }
         catch(Exception e){
 
         }
     }
-    public void play(URL url){
+    public void play(){
         clip.setFramePosition(0);
         clip.start();
     }
-    public void loop(URL url){
+    public void loop(){
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
-    public void stop(URL url){
+    public void stop(){
         clip.stop();
-    }
-    public void volumeUp(URL url){
-        currentVolume += 1.0f;
-        if(currentVolume > 0.0f){
-            currentVolume = 0.0f;
-        }
-        fc.setValue(currentVolume);
-    }
-    public void volumeDown(URL url){
-        currentVolume -= 1.0f;
-        if(currentVolume < -80.0f){
-            currentVolume = -80.0f;
-        }
-        fc.setValue(currentVolume);
     }
     public void volumeMute()
     {

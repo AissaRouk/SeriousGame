@@ -1,10 +1,9 @@
-package SeriousGame.src;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Objects;
 
 
 public class Game extends JPanel {
@@ -19,6 +18,7 @@ public class Game extends JPanel {
 
     int creditCounter = 0;
     int clickValue;
+    int difficulty = 15;
     Upgrades upg = new Upgrades();
     ImageIcon clickerImage;
 
@@ -58,7 +58,7 @@ public class Game extends JPanel {
         counterPanel.setLayout(new GridLayout(2, 1));
 
         try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("font.ttf"));
+            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Game.class.getClassLoader().getResourceAsStream("font.ttf")));
             counterLabel.setForeground(Color.black);
             counterLabel.setFont(font.deriveFont(Font.BOLD, 36));
             creditLabel.setForeground(Color.black);
@@ -73,8 +73,15 @@ public class Game extends JPanel {
         return counterPanel;
     }
     private JButton createBackButton(){
-        backButton = new JButton("Back");
-        backButton.setBounds(10, 10, 75, 50);
+        try {
+            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Game.class.getClassLoader().getResourceAsStream("font.ttf")));
+            backButton = new JButton("Back");
+            backButton.setFont(font.deriveFont(Font.BOLD, 14));
+            backButton.setBackground(Color.white);
+            backButton.setBounds(10, 10, 75, 50);
+        } catch (FontFormatException | IOException ex) {
+            ex.printStackTrace();
+        }
         return backButton;
     }
     private JButton createUpgradeButton(String str1, String str2, int x, int y){
@@ -83,18 +90,18 @@ public class Game extends JPanel {
         upgradeTextLabel1 = new JLabel(str1, SwingConstants.CENTER);
         upgradeTextLabel2 = new JLabel(str2, SwingConstants.CENTER);
         try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("font.ttf"));
-            upgradeTextLabel1.setFont(font.deriveFont(Font.BOLD, 24));
+            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Game.class.getClassLoader().getResourceAsStream("font.ttf")));
+            upgradeTextLabel1.setFont(font.deriveFont(Font.BOLD, 20));
             upgradeTextLabel2.setFont(font.deriveFont(Font.BOLD, 12));
-            upgradeTextLabel1.setForeground(Color.white);
-            upgradeTextLabel2.setForeground(Color.white);
+            upgradeTextLabel1.setForeground(Color.black);
+            upgradeTextLabel2.setForeground(Color.black);
         } catch (FontFormatException | IOException ex) {
             ex.printStackTrace();
         }
         upgradeButton.add(BorderLayout.NORTH, upgradeTextLabel1);
         upgradeButton.add(BorderLayout.SOUTH, upgradeTextLabel2);
         upgradeButton.setBounds(x, y, 200, 50);
-        upgradeButton.setBackground(Color.black);
+        upgradeButton.setBackground(Color.white);
 
         return upgradeButton;
     }
@@ -126,11 +133,14 @@ public class Game extends JPanel {
                 clickerButton.setIcon(upg.getImage());
                 creditCounter = creditCounter - upg.getUpgradeCost();
                 counterLabel.setText(String.valueOf(creditCounter));
-                upg.setUpgradeCost(upg.getUpgradeCost() * 5);
+                upg.setUpgradeCost(upg.getUpgradeCost() * difficulty);
                 changeButtonText();
             }
             else{
                 JOptionPane.showMessageDialog(cont, "Not enough social credits :(");
+            }
+            if(upg.getUpgradeIndex() == 8){
+                upgradeButton.setEnabled(false);
             }
         }
     }
