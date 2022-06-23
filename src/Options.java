@@ -10,7 +10,6 @@ public class Options extends JPanel {
     JLabel optionsText;
     JButton backButton;
     JButton muteButton;
-    int musicClick = 0;
     JButton color1button;
     JButton color2button;
     JButton color3button;
@@ -19,10 +18,11 @@ public class Options extends JPanel {
     Game game;
     Options options;
     GameMusic music;
+    Gamble gamble;
     Color color;
     Cards cont;
 
-    Options(Color color, MainMenu mainMenu, Game game, GameMusic music)
+    Options(Color color, MainMenu mainMenu, Game game, Gamble gamble, GameMusic music)
     {
         this.setLayout(null);
         this.setBackground(color);
@@ -34,14 +34,15 @@ public class Options extends JPanel {
         this.add(color3Button());
         this.mainMenu = mainMenu;
         this.game = game;
-        options = this;
+        this.gamble = gamble;
         this.color = color;
         this.music = music;
+        options = this;
     }
 
     private JLabel optionsLabel(){
         try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Game.class.getClassLoader().getResourceAsStream("font.ttf")));
+            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Options.class.getClassLoader().getResourceAsStream("font.ttf")));
             optionsText = new JLabel("OPTIONS", SwingConstants.CENTER);
             optionsText.setFont(font.deriveFont(Font.BOLD, 82));
             optionsText.setForeground(Color.white);
@@ -55,7 +56,7 @@ public class Options extends JPanel {
     private JButton backButton()
     {
         try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Game.class.getClassLoader().getResourceAsStream("font.ttf")));
+            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Options.class.getClassLoader().getResourceAsStream("font.ttf")));
             backButton = new JButton("Back");
             backButton.setFont(font.deriveFont(Font.BOLD, 14));
             backButton.setBackground(Color.white);
@@ -68,7 +69,7 @@ public class Options extends JPanel {
 
     private JButton muteButton(){
         try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Game.class.getClassLoader().getResourceAsStream("font.ttf")));
+            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Options.class.getClassLoader().getResourceAsStream("font.ttf")));
             muteButton = new JButton("Mute music");
             muteButton.setLayout(new BorderLayout());
             muteButton.setFont(font.deriveFont(Font.BOLD, 12));
@@ -83,7 +84,7 @@ public class Options extends JPanel {
     private JButton color1Button()
     {
         try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Game.class.getClassLoader().getResourceAsStream("font.ttf")));
+            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Options.class.getClassLoader().getResourceAsStream("font.ttf")));
             color1button = new JButton("Set color to camel");
             color1button.setLayout(new BorderLayout());
             color1button.setFont(font.deriveFont(Font.BOLD, 12));
@@ -98,7 +99,7 @@ public class Options extends JPanel {
     private JButton color2Button()
     {
         try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Game.class.getClassLoader().getResourceAsStream("font.ttf")));
+            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Options.class.getClassLoader().getResourceAsStream("font.ttf")));
             color2button = new JButton("Set color to chambray");
             color2button.setLayout(new BorderLayout());
             color2button.setFont(font.deriveFont(Font.BOLD, 12));
@@ -113,7 +114,7 @@ public class Options extends JPanel {
     private JButton color3Button()
     {
         try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Game.class.getClassLoader().getResourceAsStream("font.ttf")));
+            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(Options.class.getClassLoader().getResourceAsStream("font.ttf")));
             color3button = new JButton("Set color to red");
             color3button.setLayout(new BorderLayout());
             color3button.setFont(font.deriveFont(Font.BOLD, 12));
@@ -156,6 +157,7 @@ public class Options extends JPanel {
             mainMenu.setBackground(color);
             game.setBackground(color);
             options.setBackground(color);
+            gamble.setBackground(color);
         }
     }
 
@@ -165,6 +167,7 @@ public class Options extends JPanel {
             mainMenu.setBackground(color);
             game.setBackground(color);
             options.setBackground(color);
+            gamble.setBackground(color);
         }
     }
 
@@ -173,6 +176,7 @@ public class Options extends JPanel {
             mainMenu.setBackground(color);
             game.setBackground(color);
             options.setBackground(color);
+            gamble.setBackground(color);
         }
     }
 }

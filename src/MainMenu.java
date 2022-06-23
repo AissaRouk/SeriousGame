@@ -12,10 +12,12 @@ public class MainMenu extends JPanel{
     JButton optionsButton;
     JButton exitButton;
     JLabel version;
+    Game game;
 
 
-    MainMenu(Color color)
+    MainMenu(Color color, Game game)
     {
+        this.game = game;
         this.setLayout(null);
         this.setBackground(color);
         this.add(menuIcon());
@@ -98,6 +100,8 @@ public class MainMenu extends JPanel{
         optionsButton.addActionListener(optionsClick);
         ExitButton exitClick = new ExitButton();
         exitButton.addActionListener(exitClick);
+
+
     }
 
     public class PlayButton implements ActionListener {

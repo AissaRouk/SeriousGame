@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.net.URL;
 import java.util.Objects;
 
 public class Window extends JFrame{
@@ -9,7 +8,7 @@ public class Window extends JFrame{
         this.setTitle("Bing Qi Ling Clicker.executable file.exe");
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
-        this.setResizable(true);
+        this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ImageIcon frameImage = new ImageIcon(Objects.requireNonNull(Window.class.getClassLoader().getResource("icon.png")));
         this.setIconImage(frameImage.getImage());

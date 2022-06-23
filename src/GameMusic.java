@@ -20,7 +20,7 @@ public class GameMusic {
             fc = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
             fc.setValue(-20.0f);
         }
-        catch(Exception e){
+        catch(Exception ignored){
 
         }
     }
@@ -36,15 +36,14 @@ public class GameMusic {
     }
     public void volumeMute()
     {
-        if(mute == false)
+        if(!mute)
         {
             previousVolume = currentVolume;
             currentVolume = -80.0f;
             fc.setValue(currentVolume);
             mute = true;
         }
-        else if(mute == true)
-        {
+        else {
             currentVolume = previousVolume;
             fc.setValue(currentVolume);
             mute = false;
