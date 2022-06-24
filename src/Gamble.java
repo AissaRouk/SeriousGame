@@ -26,14 +26,12 @@ public class Gamble extends JPanel{
         this.add(createBackButton());
         this.add(createCreditsLabel());
         this.add(createGambleCreditsLabel());
-        this.add(XQCGAMBA());
+        this.add(xQcGAMBA());
     }
-
-    private JLabel XQCGAMBA(){
+    private JLabel xQcGAMBA(){
         ImageIcon image = new ImageIcon(Objects.requireNonNull(Gamble.class.getClassLoader().getResource("xqcgamba.gif")));
         juicerLabel = new JLabel(image);
         juicerLabel.setBounds(200, 30, 400, 333);
-
         return juicerLabel;
     }
     private JLabel createCreditsLabel()
@@ -48,7 +46,6 @@ public class Gamble extends JPanel{
         }
         return creditsLabel;
     }
-
     private JLabel createGambleCreditsLabel()
     {
         try {
@@ -61,7 +58,6 @@ public class Gamble extends JPanel{
         }
         return gcreditsLabel;
     }
-
     private JButton createGambleButton()
     {
         try {
@@ -100,7 +96,7 @@ public class Gamble extends JPanel{
 
     public class GambleButton implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            if(credits > 0) {
+            if(gcredits > 0) {
                 String[] options = new String[] {"Heads", "Tails"};
                 int x =  JOptionPane.showOptionDialog(null, "Do you want to pick heads or tails?", "Big decision",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,

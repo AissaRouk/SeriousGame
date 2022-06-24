@@ -31,7 +31,6 @@ public class Upgrades {
     public void setAutoClickUpgradeIndex(int autoClickUpgradeIndex){
         this.autoClickUpgradeIndex = autoClickUpgradeIndex;
     }
-
     public void setClickValue(int clickValue){
         this.clickValue = clickValue;
     }

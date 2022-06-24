@@ -10,7 +10,7 @@ public class Main {
         URL musicURL = Window.class.getClassLoader().getResource("gameMusic.wav");
         music.setFile(musicURL);
         Game game = new Game(color);
-        MainMenu menu = new MainMenu(color, game);
+        MainMenu menu = new MainMenu(color);
         Gamble gamble = new Gamble(color, game);
         Options options = new Options(color, menu, game, gamble, music);
         Cards cont = new Cards(menu, game, options, gamble);

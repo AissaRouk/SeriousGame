@@ -35,9 +35,9 @@ public class Game extends JPanel {
         this.setBackground(color);
         this.add(createClickerButton(color));
         this.add(createCounterPanel());
-        this.add(createUpgradeButton(upg.getText1(), upg.getText2(), 475, 230));
-        this.add(createAutoClickUpgradeButton(upg.getText3(), upg.getText4(), 475, 305));
-        this.add(createGambleButton(475, 380));
+        this.add(createUpgradeButton(upg.getText1(), upg.getText2(), 440, 230));
+        this.add(createAutoClickUpgradeButton(upg.getText3(), upg.getText4(), 440, 305));
+        this.add(createGambleButton(440, 380));
         this.add(createBackButton());
     }
     private JPanel createClickerButton (Color color){
@@ -61,7 +61,7 @@ public class Game extends JPanel {
         counterLabel = new JLabel(String.valueOf(creditCounter), SwingConstants.CENTER);
         JLabel creditLabel = new JLabel("social credits", SwingConstants.CENTER);
 
-        counterPanel.setBounds(96, 75, 250, 100);
+        counterPanel.setBounds(70, 75, 300, 100);
         counterPanel.setOpaque(false);
         counterPanel.setLayout(new GridLayout(2, 1));
 
@@ -108,7 +108,7 @@ public class Game extends JPanel {
         }
         upgradeButton.add(BorderLayout.NORTH, upgradeTextLabel1);
         upgradeButton.add(BorderLayout.SOUTH, upgradeTextLabel2);
-        upgradeButton.setBounds(x, y, 200, 50);
+        upgradeButton.setBounds(x, y, 250, 50);
         upgradeButton.setBackground(Color.white);
 
         return upgradeButton;
@@ -129,7 +129,7 @@ public class Game extends JPanel {
         }
         autoClickUpgradeButton.add(BorderLayout.NORTH, upgradeTextLabel3);
         autoClickUpgradeButton.add(BorderLayout.SOUTH, upgradeTextLabel4);
-        autoClickUpgradeButton.setBounds(x, y, 200, 50);
+        autoClickUpgradeButton.setBounds(x, y, 250, 50);
         autoClickUpgradeButton.setBackground(Color.white);
 
         return autoClickUpgradeButton;
@@ -143,7 +143,7 @@ public class Game extends JPanel {
         } catch (FontFormatException | IOException ex) {
             ex.printStackTrace();
         }
-        gambleButton.setBounds(x, y, 200, 50);
+        gambleButton.setBounds(x, y, 250, 50);
         gambleButton.setBackground(Color.white);
         return gambleButton;
     }
@@ -160,7 +160,6 @@ public class Game extends JPanel {
         gambleButton.addActionListener(gambleClick);
         BackButton backClick = new BackButton();
         backButton.addActionListener(backClick);
-
     }
     private void setTimer(int perSecond){
         timer = new Timer(1000, new ActionListener() {

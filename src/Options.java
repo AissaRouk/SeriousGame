@@ -10,6 +10,7 @@ public class Options extends JPanel {
     JLabel optionsText;
     JButton backButton;
     JButton muteButton;
+    int muted = 0;
     JButton color1button;
     JButton color2button;
     JButton color3button;
@@ -147,7 +148,16 @@ public class Options extends JPanel {
     }
     public class MuteButton implements ActionListener {
         public void actionPerformed(ActionEvent backClick) {
-            music.volumeMute();
+            if(muted == 0){
+                music.volumeMute();
+                muted = 1;
+                muteButton.setText("Unmute music");
+            }
+            else if(muted == 1){
+                music.volumeMute();
+                muted = 0;
+                muteButton.setText("Mute music");
+            }
         }
     }
 
